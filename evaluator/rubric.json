@@ -1,0 +1,75 @@
+{
+  "name": "cert-c-rag-eval-rubric",
+  "similarity_note": "Prefer LLM embeddings; fall back to BERTScore, SentenceTransformers, TF-IDF, then token overlap.",
+  "definitions": {
+    "SimText(x, y)": "Semantic similarity in [0,1] using LLM embeddings; fallbacks as noted.",
+    "CodeSim(x, Y[])": "Max similarity over Y using char-gram TF-IDF or code embeddings, in [0,1].",
+    "OrdinalDistance(a, b)": "Index distance over ['Low','Medium','High','Critical'] (0..3)."
+  },
+  "metrics": [
+    {
+      "metric": "Compilation Check",
+      "description": "Suggested fix must compile.",
+      "evaluation_method": "compile(ai.fix_code) == pass",
+      "weight": "Hard 0 if fail"
+    },
+    {
+      "metric": "Tests Check",
+      "description": "All unit/regression/security tests (if provided) must pass.",
+      "evaluation_method": "tests(ai.fix_code) == pass",
+      "weight": "Hard 0 if fail"
+    },
+    {
+      "metric": "Static Analyzer Regression Check",
+      "description": "No new issues; original finding resolved when applicable.",
+      "evaluation_method": "coverity(ai.fix_code).new_issues == 0 AND (gold.violation == false OR coverity(ai.fix_code).resolves(rule_id=gold.rule_id) == true)",
+      "weight": "Hard 0 if fail"
+    },
+    {
+      "metric": "False Positive Handling",
+      "description": "If the original finding is a false positive, the model must mark it compliant.",
+      "evaluation_method": "(gold.violation == false) => (ai.violation == false)",
+      "weight": "Hard 0 if fail"
+    },
+    {
+      "metric": "Severity Alignment with CERT-C",
+      "description": "Predicted severity aligns with the rule’s gold severity.",
+      "evaluation_method": "Score = {0->1.0, 1->0.7, 2->0.3, >=3 or unknown->0.0} where bucket = OrdinalDistance(ai.severity, gold.severity)",
+      "weight": 10
+    },
+    {
+      "metric": "Priority Alignment with CERT-C",
+      "description": "Predicted priority matches the rule’s gold priority (P1..P18).",
+      "evaluation_method": "lower(ai.priority) == lower(gold.priority)",
+      "weight": 15
+    },
+    {
+      "metric": "Issue Understanding",
+      "description": "Issue explanation matches the rule’s noncompliant rationale and examples (the AI understood what’s wrong).",
+      "evaluation_method": "max( SimText(ai.issue_text, gold.noncompliant_blob), SimText(ai.issue_text, gold.rule_intro), CodeSim(ai.issue_code, gold.noncompliant_codes) )",
+      "weight": 15
+    },
+    {
+      "metric": "Fix Explanation Alignment",
+      "description": "Fix explanation aligns with compliant rationale, risk explanation, and rule description.",
+      "evaluation_method": "good = max( SimText(ai.fix_text, gold.compliant_blob), SimText(ai.fix_text, gold.risk_expl), SimText(ai.fix_text, gold.rule_intro) ); bad = SimText(ai.fix_text, gold.noncompliant_blob); gap = good - bad; Score buckets: OK if (good>=0.65 and gap>=0.20), Partial if (good>=0.40 and gap>=0.10), else Misguided",
+      "weight": 20
+    },
+    {
+      "metric": "Fix Code Similarity to Compliant Examples",
+      "description": "Fix code resembles official compliant examples.",
+      "evaluation_method": "CodeSim(ai.fix_code, gold.compliant_codes)",
+      "weight": 20
+    },
+    {
+      "metric": "Fix Code Dissimilarity to Noncompliant Examples",
+      "description": "Fix code avoids resembling official noncompliant examples.",
+      "evaluation_method": "1 - CodeSim(ai.fix_code, gold.noncompliant_codes)",
+      "weight": 20
+    }
+  ],
+  "notes": {
+    "weights_sum_to": 100,
+    "scoring": "Apply all hard_zero_if_fail gates first; if any gate fails, overall score = 0. Otherwise compute weighted sum over metrics (0–100)."
+  }
+}
