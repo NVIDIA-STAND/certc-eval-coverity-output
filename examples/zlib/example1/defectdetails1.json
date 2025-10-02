@@ -1,0 +1,195 @@
+{
+    "occurrences": [
+        {
+            "eventSets": [
+                {
+                    "eventTree": [
+                        {
+                            "level": 0,
+                            "eventTreeLabel": "2",
+                            "parentIds": [],
+                            "stackTrace": null,
+                            "accessible": true,
+                            "main": true,
+                            "filename": "example.c",
+                            "fileInstanceId": 164607,
+                            "description": "Calling &quot;inflate&quot; without checking return value (as is done elsewhere 4 out of 5 times).",
+                            "id": "20769-2",
+                            "lineNumber": 435,
+                            "tag": "check_return"
+                        }
+                    ],
+                    "set": 0,
+                    "caption": "Unchecked call to function",
+                    "setLabel": ""
+                },
+                {
+                    "eventTree": [
+                        {
+                            "level": 0,
+                            "eventTreeLabel": "1",
+                            "parentIds": [],
+                            "stackTrace": null,
+                            "accessible": true,
+                            "main": false,
+                            "filename": "gzread.c",
+                            "fileInstanceId": 164648,
+                            "description": "Example 1: Assigning: &quot;ret&quot; = return value from &quot;inflate(strm, 0)&quot;.",
+                            "id": "20769-3",
+                            "lineNumber": 191,
+                            "tag": "example_assign"
+                        },
+                        {
+                            "level": 0,
+                            "eventTreeLabel": "2",
+                            "parentIds": [],
+                            "stackTrace": null,
+                            "accessible": true,
+                            "main": false,
+                            "filename": "gzread.c",
+                            "fileInstanceId": 164648,
+                            "description": "Example 1 (cont.): &quot;ret&quot; has its value checked in &quot;ret == -2&quot;.",
+                            "id": "20769-4",
+                            "lineNumber": 192,
+                            "tag": "example_checked"
+                        }
+                    ],
+                    "set": 1,
+                    "caption": "Examples where return value is checked",
+                    "setLabel": "A"
+                },
+                {
+                    "eventTree": [
+                        {
+                            "level": 0,
+                            "eventTreeLabel": "1",
+                            "parentIds": [],
+                            "stackTrace": null,
+                            "accessible": true,
+                            "main": false,
+                            "filename": "example.c",
+                            "fileInstanceId": 164607,
+                            "description": "Example 2: Assigning: &quot;err&quot; = return value from &quot;inflate(&amp;d_stream, 0)&quot;.",
+                            "id": "20769-5",
+                            "lineNumber": 517,
+                            "tag": "example_assign"
+                        },
+                        {
+                            "level": 0,
+                            "eventTreeLabel": "2",
+                            "parentIds": [],
+                            "stackTrace": null,
+                            "accessible": true,
+                            "main": false,
+                            "filename": "example.c",
+                            "fileInstanceId": 164607,
+                            "description": "Example 2 (cont.): &quot;err&quot; has its value checked in &quot;err == 1&quot;.",
+                            "id": "20769-6",
+                            "lineNumber": 518,
+                            "tag": "example_checked"
+                        }
+                    ],
+                    "set": 2,
+                    "caption": null,
+                    "setLabel": "B"
+                },
+                {
+                    "eventTree": [
+                        {
+                            "level": 0,
+                            "eventTreeLabel": "1",
+                            "parentIds": [],
+                            "stackTrace": null,
+                            "accessible": true,
+                            "main": false,
+                            "filename": "example.c",
+                            "fileInstanceId": 164607,
+                            "description": "Example 3: Assigning: &quot;err&quot; = return value from &quot;inflate(&amp;d_stream, 0)&quot;.",
+                            "id": "20769-7",
+                            "lineNumber": 260,
+                            "tag": "example_assign"
+                        },
+                        {
+                            "level": 0,
+                            "eventTreeLabel": "2",
+                            "parentIds": [],
+                            "stackTrace": null,
+                            "accessible": true,
+                            "main": false,
+                            "filename": "example.c",
+                            "fileInstanceId": 164607,
+                            "description": "Example 3 (cont.): &quot;err&quot; has its value checked in &quot;err == 1&quot;.",
+                            "id": "20769-8",
+                            "lineNumber": 261,
+                            "tag": "example_checked"
+                        }
+                    ],
+                    "set": 3,
+                    "caption": null,
+                    "setLabel": "C"
+                },
+                {
+                    "eventTree": [
+                        {
+                            "level": 0,
+                            "eventTreeLabel": "1",
+                            "parentIds": [],
+                            "stackTrace": null,
+                            "accessible": true,
+                            "main": false,
+                            "filename": "example.c",
+                            "fileInstanceId": 164607,
+                            "description": "Example 4: Assigning: &quot;err&quot; = return value from &quot;inflate(&amp;d_stream, 0)&quot;.",
+                            "id": "20769-9",
+                            "lineNumber": 356,
+                            "tag": "example_assign"
+                        },
+                        {
+                            "level": 0,
+                            "eventTreeLabel": "2",
+                            "parentIds": [],
+                            "stackTrace": null,
+                            "accessible": true,
+                            "main": false,
+                            "filename": "example.c",
+                            "fileInstanceId": 164607,
+                            "description": "Example 4 (cont.): &quot;err&quot; has its value checked in &quot;err == 1&quot;.",
+                            "id": "20769-10",
+                            "lineNumber": 357,
+                            "tag": "example_checked"
+                        }
+                    ],
+                    "set": 4,
+                    "caption": null,
+                    "setLabel": "D"
+                }
+            ],
+            "ordered": true,
+            "streamName": "andrewvaughanj-zlib",
+            "occurrenceIndex": 1,
+            "occurrenceCount": 1,
+            "fullOccurrenceCount": 1,
+            "defectInstanceId": 20769,
+            "properties": [],
+            "purged": false
+        }
+    ],
+    "longDescription": "Value returned from a function is not checked for errors before being used",
+    "country": "US",
+    "ruleStrength": null,
+    "projects": [],
+    "hasDocumentation": true,
+    "defectInstanceId": 20769,
+    "functionName": "test_sync",
+    "language": "en",
+    "shortDescription": "Unchecked return value",
+    "mergedDefectCID": 17090,
+    "localEffect": "If the function returns an error value, the error value may be mistaken for a normal value.",
+    "domain": "static",
+    "unclassifiedChecker": false,
+    "checkerName": "CHECKED_RETURN",
+    "purged": false,
+    "mergedDefectId": 17090,
+    "cweCategory": 252,
+    "microsoftRuleName": null
+}

@@ -1,0 +1,289 @@
+{
+    "fileMax": 250,
+    "ancestorFileInstanceIds": [
+        164768,
+        164651,
+        164652
+    ],
+    "filePath": "/test/minigzip.c",
+    "fileStart": 526,
+    "lineIdPrefix": "main",
+    "ta": {
+        "fileChangeRecords": [],
+        "fileAnnotations": []
+    },
+    "mainEventId": "20772-40",
+    "fileInstanceId": "164768",
+    "fileEnd": 775,
+    "fileLast": 651,
+    "defects": [
+        {
+            "checker": "TAINTED_STRING",
+            "defectInstanceIds": [
+                20772
+            ],
+            "shortDescription": "Use of untrusted string value",
+            "ids": {
+                "cid": 17092,
+                "defectInstanceId": 20772,
+                "fileInstanceId": "164768",
+                "mergedDefectId": 17092
+            },
+            "occurrenceIndex": 1,
+            "occurrenceCount": 1,
+            "mainEvent": {
+                "id": "20772-40",
+                "description": "Passing tainted string <span class=\"code\">*argv</span> to <span class=\"code\">file_uncompress</span>, which cannot accept tainted data.",
+                "lineNumber": 629
+            },
+            "impact": "Medium"
+        }
+    ],
+    "purged": false,
+    "events": [
+        {
+            "id": "20772-0",
+            "lineNumber": 573,
+            "ordered": true,
+            "description": "Condition <span class=\"code\">bname</span>, taking true branch",
+            "tag": "cond_true",
+            "polarity": "false",
+            "orderLabel": "1"
+        },
+        {
+            "id": "20772-1",
+            "lineNumber": 574,
+            "ordered": true,
+            "description": "Falling through to end of if statement",
+            "tag": "if_fallthrough",
+            "polarity": "false",
+            "orderLabel": "2"
+        },
+        {
+            "id": "20772-3",
+            "lineNumber": 579,
+            "ordered": true,
+            "description": "Condition <span class=\"code\">!strcmp(bname,&nbsp;<span class=\"literal\">&quot;gunzip&quot;</span>)</span>, taking true branch",
+            "tag": "cond_true",
+            "polarity": "false",
+            "orderLabel": "3"
+        },
+        {
+            "id": "20772-4",
+            "lineNumber": 580,
+            "ordered": true,
+            "description": "Falling through to end of if statement",
+            "tag": "if_fallthrough",
+            "polarity": "false",
+            "orderLabel": "4"
+        },
+        {
+            "id": "20772-6",
+            "lineNumber": 584,
+            "ordered": true,
+            "description": "Condition <span class=\"code\">argc&nbsp;&gt;&nbsp;<span class=\"literal\">0</span></span>, taking true branch",
+            "tag": "cond_true",
+            "polarity": "false",
+            "orderLabel": "5"
+        },
+        {
+            "id": "20772-7",
+            "lineNumber": 585,
+            "ordered": true,
+            "description": "Condition <span class=\"code\">strcmp(*argv,&nbsp;<span class=\"literal\">&quot;-c&quot;</span>)&nbsp;==&nbsp;<span class=\"literal\">0</span></span>, taking false branch",
+            "tag": "cond_false",
+            "polarity": "false",
+            "orderLabel": "6"
+        },
+        {
+            "id": "20772-9",
+            "lineNumber": 587,
+            "ordered": true,
+            "description": "Condition <span class=\"code\">strcmp(*argv,&nbsp;<span class=\"literal\">&quot;-d&quot;</span>)&nbsp;==&nbsp;<span class=\"literal\">0</span></span>, taking true branch",
+            "tag": "cond_true",
+            "polarity": "false",
+            "orderLabel": "7"
+        },
+        {
+            "id": "20772-10",
+            "lineNumber": 588,
+            "ordered": true,
+            "description": "Falling through to end of if statement",
+            "tag": "if_fallthrough",
+            "polarity": "false",
+            "orderLabel": "8"
+        },
+        {
+            "id": "20772-12",
+            "lineNumber": 601,
+            "ordered": true,
+            "description": "Jumping back to the beginning of the loop",
+            "tag": "loop",
+            "polarity": "false",
+            "orderLabel": "9"
+        },
+        {
+            "id": "20772-14",
+            "lineNumber": 584,
+            "ordered": true,
+            "description": "Condition <span class=\"code\">argc&nbsp;&gt;&nbsp;<span class=\"literal\">0</span></span>, taking true branch",
+            "tag": "cond_true",
+            "polarity": "false",
+            "orderLabel": "10"
+        },
+        {
+            "id": "20772-15",
+            "lineNumber": 585,
+            "ordered": true,
+            "description": "Condition <span class=\"code\">strcmp(*argv,&nbsp;<span class=\"literal\">&quot;-c&quot;</span>)&nbsp;==&nbsp;<span class=\"literal\">0</span></span>, taking false branch",
+            "tag": "cond_false",
+            "polarity": "false",
+            "orderLabel": "11"
+        },
+        {
+            "id": "20772-17",
+            "lineNumber": 587,
+            "ordered": true,
+            "description": "Condition <span class=\"code\">strcmp(*argv,&nbsp;<span class=\"literal\">&quot;-d&quot;</span>)&nbsp;==&nbsp;<span class=\"literal\">0</span></span>, taking false branch",
+            "tag": "cond_false",
+            "polarity": "false",
+            "orderLabel": "12"
+        },
+        {
+            "id": "20772-19",
+            "lineNumber": 589,
+            "ordered": true,
+            "description": "Condition <span class=\"code\">strcmp(*argv,&nbsp;<span class=\"literal\">&quot;-f&quot;</span>)&nbsp;==&nbsp;<span class=\"literal\">0</span></span>, taking false branch",
+            "tag": "cond_false",
+            "polarity": "false",
+            "orderLabel": "13"
+        },
+        {
+            "id": "20772-21",
+            "lineNumber": 591,
+            "ordered": true,
+            "description": "Condition <span class=\"code\">strcmp(*argv,&nbsp;<span class=\"literal\">&quot;-h&quot;</span>)&nbsp;==&nbsp;<span class=\"literal\">0</span></span>, taking false branch",
+            "tag": "cond_false",
+            "polarity": "false",
+            "orderLabel": "14"
+        },
+        {
+            "id": "20772-23",
+            "lineNumber": 593,
+            "ordered": true,
+            "description": "Condition <span class=\"code\">strcmp(*argv,&nbsp;<span class=\"literal\">&quot;-r&quot;</span>)&nbsp;==&nbsp;<span class=\"literal\">0</span></span>, taking false branch",
+            "tag": "cond_false",
+            "polarity": "false",
+            "orderLabel": "15"
+        },
+        {
+            "id": "20772-25",
+            "lineNumber": 595,
+            "ordered": true,
+            "description": "Condition <span class=\"code\">*argv[<span class=\"literal\">0</span>]&nbsp;==&nbsp;<span class=\"literal\">'-'</span></span>, taking true branch",
+            "tag": "cond_true",
+            "polarity": "false",
+            "orderLabel": "16"
+        },
+        {
+            "id": "20772-26",
+            "lineNumber": 595,
+            "ordered": true,
+            "description": "Condition <span class=\"code\">*argv[<span class=\"literal\">1</span>]&nbsp;&gt;=&nbsp;<span class=\"literal\">'1'</span></span>, taking true branch",
+            "tag": "cond_true",
+            "polarity": "false",
+            "orderLabel": "17"
+        },
+        {
+            "id": "20772-27",
+            "lineNumber": 595,
+            "ordered": true,
+            "description": "Condition <span class=\"code\">*argv[<span class=\"literal\">1</span>]&nbsp;&lt;=&nbsp;<span class=\"literal\">'9'</span></span>, taking true branch",
+            "tag": "cond_true",
+            "polarity": "false",
+            "orderLabel": "18"
+        },
+        {
+            "id": "20772-28",
+            "lineNumber": 595,
+            "ordered": true,
+            "description": "Condition <span class=\"code\">*argv[<span class=\"literal\">2</span>]&nbsp;==&nbsp;<span class=\"literal\">0</span></span>, taking false branch",
+            "tag": "cond_false",
+            "polarity": "false",
+            "orderLabel": "19"
+        },
+        {
+            "id": "20772-30",
+            "lineNumber": 599,
+            "ordered": true,
+            "description": "Breaking from loop",
+            "tag": "break",
+            "polarity": "false",
+            "orderLabel": "20"
+        },
+        {
+            "id": "20772-32",
+            "lineNumber": 602,
+            "ordered": true,
+            "description": "Condition <span class=\"code\">outmode[<span class=\"literal\">3</span>]&nbsp;==&nbsp;<span class=\"literal\">'&nbsp;'</span></span>, taking true branch",
+            "tag": "cond_true",
+            "polarity": "false",
+            "orderLabel": "21"
+        },
+        {
+            "id": "20772-33",
+            "lineNumber": 604,
+            "ordered": true,
+            "description": "Condition <span class=\"code\">argc&nbsp;==&nbsp;<span class=\"literal\">0</span></span>, taking false branch",
+            "tag": "cond_false",
+            "polarity": "false",
+            "orderLabel": "22"
+        },
+        {
+            "id": "20772-35",
+            "lineNumber": 617,
+            "ordered": true,
+            "description": "Condition <span class=\"code\">copyout</span>, taking false branch",
+            "tag": "cond_false",
+            "polarity": "false",
+            "orderLabel": "23"
+        },
+        {
+            "id": "20772-37",
+            "lineNumber": 621,
+            "ordered": true,
+            "description": "Condition <span class=\"code\">uncompr</span>, taking true branch",
+            "tag": "cond_true",
+            "polarity": "false",
+            "orderLabel": "24"
+        },
+        {
+            "id": "20772-38",
+            "lineNumber": 622,
+            "ordered": true,
+            "description": "Condition <span class=\"code\">copyout</span>, taking false branch",
+            "tag": "cond_false",
+            "polarity": "false",
+            "orderLabel": "25"
+        },
+        {
+            "childModel": {
+                "eventId": "20772-40",
+                "modelId": "20772-0",
+                "fileInstanceId": 164768,
+                "filePath": "/test/minigzip.c",
+                "fileStart": 496,
+                "fileEnd": 543
+            },
+            "id": "20772-40",
+            "lineNumber": 629,
+            "ordered": true,
+            "tag": "tainted_string",
+            "description": "Passing tainted string <span class=\"code\">*argv</span> to <span class=\"code\">file_uncompress</span>, which cannot accept tainted data.",
+            "orderLabel": "26",
+            "eventSet": 0,
+            "main": true
+        }
+    ],
+    "mergedDefectId": 17092
+}

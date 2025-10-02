@@ -321,7 +321,65 @@ def _render_example_selector(
     pass
 
 
+def _load_zlib_example(example_num: int) -> Tuple[Dict[str, Any], Dict[str, Any], Dict[str, Any]]:
+    """Load a zlib example by number (1-3)."""
+    import os
+    base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    example_dir = os.path.join(base_dir, "examples", "zlib", f"example{example_num}")
+    
+    # Load defect details
+    with open(os.path.join(example_dir, f"defectdetails{example_num}.json"), 'r') as f:
+        defect_details = json.load(f)
+    
+    # Load defect triage
+    with open(os.path.join(example_dir, f"defecttriage{example_num}.json"), 'r') as f:
+        defect_triage = json.load(f)
+    
+    # Load source
+    with open(os.path.join(example_dir, f"source{example_num}.json"), 'r') as f:
+        source = json.load(f)
+    
+    return defect_details, defect_triage, source
+
+def _render_zlib_examples():
+    """Render zlib example buttons in the sidebar."""
+    st.sidebar.markdown("### ZLIB Examples")
+    
+    col1, col2, col3 = st.sidebar.columns(3)
+    
+    if col1.button("Example 1"):
+        try:
+            defect_details, defect_triage, source = _load_zlib_example(1)
+            st.session_state.defect_details_json = json.dumps(defect_details, indent=2)
+            st.session_state.defect_triage_json = json.dumps(defect_triage, indent=2)
+            st.session_state.source_json = json.dumps(source, indent=2)
+            st.rerun()
+        except Exception as e:
+            st.error(f"Failed to load Example 1: {str(e)}")
+    
+    if col2.button("Example 2"):
+        try:
+            defect_details, defect_triage, source = _load_zlib_example(2)
+            st.session_state.defect_details_json = json.dumps(defect_details, indent=2)
+            st.session_state.defect_triage_json = json.dumps(defect_triage, indent=2)
+            st.session_state.source_json = json.dumps(source, indent=2)
+            st.rerun()
+        except Exception as e:
+            st.error(f"Failed to load Example 2: {str(e)}")
+    
+    if col3.button("Example 3"):
+        try:
+            defect_details, defect_triage, source = _load_zlib_example(3)
+            st.session_state.defect_details_json = json.dumps(defect_details, indent=2)
+            st.session_state.defect_triage_json = json.dumps(defect_triage, indent=2)
+            st.session_state.source_json = json.dumps(source, indent=2)
+            st.rerun()
+        except Exception as e:
+            st.error(f"Failed to load Example 3: {str(e)}")
+
 def _render_sidebar_controls(examples: List[Dict[str, Any]], examples_error: Optional[str]) -> None:
+    _render_zlib_examples()
+    st.sidebar.markdown("---")  # Add a separator
     controls = st.sidebar.expander("Example Data", expanded=False)
     _render_example_selector(examples, examples_error, controls)
 

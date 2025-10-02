@@ -1,0 +1,253 @@
+{
+    "btsExport": false,
+    "ownerDisplayUsername": "Unassigned",
+    "ownerDisplayUsernameByCid": {
+        "17090": "Unassigned"
+    },
+    "fixedDefect": false,
+    "lastTriaged": "2017-06-12 02:36:53",
+    "numberTriageableTriageStores": 0,
+    "updatedValuesByCid": {
+        "17090": {
+            "lastTriaged": 1497235013914,
+            "status": "New"
+        }
+    },
+    "exportEnabled": false,
+    "ownerId": -1,
+    "lastCommentDate": "2017-06-12 02:36:53",
+    "triageChanges": [
+        {
+            "userName": "minhyuk@live.co.kr",
+            "date": "2017-06-12 02:36:53",
+            "comment": "",
+            "affectedTriageStoreNames": [
+                "Default Triage Store"
+            ],
+            "fieldDiffs": [
+                {
+                    "fieldKey": "action",
+                    "displayField": "Action",
+                    "oldAPIValue": "Undecided",
+                    "oldDisplayValue": "Undecided",
+                    "newAPIValue": "Ignore",
+                    "newDisplayValue": "Ignore"
+                }
+            ]
+        }
+    ],
+    "acOwnerParams": {
+        "streamDefectIds": []
+    },
+    "defectTriageKeys": [],
+    "mergedDefectIds": [
+        17090
+    ],
+    "ownerDisplayFullName": "Unassigned",
+    "defectStatus": "New",
+    "lastTriagedUser": "minhyuk@live.co.kr",
+    "attributes": [
+        {
+            "id": 3,
+            "displayName": "Classification",
+            "attributeType": "LIST_OF_VALUES",
+            "showInTriage": true,
+            "builtIn": true,
+            "columnKey": "classification",
+            "columnValue": "Unclassified",
+            "state": {
+                "id": 20,
+                "displayName": "Unclassified",
+                "deprecated": false,
+                "initial": true,
+                "various": false
+            },
+            "items": [
+                {
+                    "id": 20,
+                    "displayName": "Unclassified",
+                    "deprecated": false,
+                    "initial": true,
+                    "various": false
+                },
+                {
+                    "id": 21,
+                    "displayName": "Pending",
+                    "deprecated": false,
+                    "initial": false,
+                    "various": false
+                },
+                {
+                    "id": 22,
+                    "displayName": "False Positive",
+                    "deprecated": false,
+                    "initial": false,
+                    "various": false
+                },
+                {
+                    "id": 23,
+                    "displayName": "Intentional",
+                    "deprecated": false,
+                    "initial": false,
+                    "various": false
+                },
+                {
+                    "id": 24,
+                    "displayName": "Bug",
+                    "deprecated": false,
+                    "initial": false,
+                    "various": false
+                }
+            ],
+            "columnValueByCid": {
+                "17090": "Unclassified"
+            },
+            "enabled": false
+        },
+        {
+            "id": 1,
+            "displayName": "Severity",
+            "attributeType": "LIST_OF_VALUES",
+            "showInTriage": true,
+            "builtIn": true,
+            "columnKey": "severity",
+            "columnValue": "Unspecified",
+            "state": {
+                "id": 10,
+                "displayName": "Unspecified",
+                "deprecated": false,
+                "initial": true,
+                "various": false
+            },
+            "items": [
+                {
+                    "id": 10,
+                    "displayName": "Unspecified",
+                    "deprecated": false,
+                    "initial": true,
+                    "various": false
+                },
+                {
+                    "id": 11,
+                    "displayName": "Major",
+                    "deprecated": false,
+                    "initial": false,
+                    "various": false
+                },
+                {
+                    "id": 12,
+                    "displayName": "Moderate",
+                    "deprecated": false,
+                    "initial": false,
+                    "various": false
+                },
+                {
+                    "id": 13,
+                    "displayName": "Minor",
+                    "deprecated": false,
+                    "initial": false,
+                    "various": false
+                }
+            ],
+            "columnValueByCid": {
+                "17090": "Unspecified"
+            },
+            "enabled": true
+        },
+        {
+            "id": 2,
+            "displayName": "Action",
+            "attributeType": "LIST_OF_VALUES",
+            "showInTriage": true,
+            "builtIn": true,
+            "columnKey": "action",
+            "columnValue": "Ignore",
+            "state": {
+                "id": 5,
+                "displayName": "Ignore",
+                "deprecated": false,
+                "initial": false,
+                "various": false
+            },
+            "items": [
+                {
+                    "id": 1,
+                    "displayName": "Undecided",
+                    "deprecated": false,
+                    "initial": true,
+                    "various": false
+                },
+                {
+                    "id": 2,
+                    "displayName": "Fix Required",
+                    "deprecated": false,
+                    "initial": false,
+                    "various": false
+                },
+                {
+                    "id": 3,
+                    "displayName": "Fix Submitted",
+                    "deprecated": false,
+                    "initial": false,
+                    "various": false
+                },
+                {
+                    "id": 4,
+                    "displayName": "Modeling Required",
+                    "deprecated": false,
+                    "initial": false,
+                    "various": false
+                },
+                {
+                    "id": 5,
+                    "displayName": "Ignore",
+                    "deprecated": false,
+                    "initial": false,
+                    "various": false
+                }
+            ],
+            "columnValueByCid": {
+                "17090": "Ignore"
+            },
+            "enabled": true
+        },
+        {
+            "id": 4,
+            "displayName": "Ext. Reference",
+            "attributeType": "STRING",
+            "showInTriage": true,
+            "builtIn": true,
+            "columnKey": "extreference",
+            "columnValue": null,
+            "state": null,
+            "items": [],
+            "columnValueByCid": {},
+            "enabled": true
+        }
+    ],
+    "lastComment": "",
+    "disabled": true,
+    "projectId": 10224,
+    "detectionChanges": [
+        {
+            "userName": "commit",
+            "date": "2015-10-13 03:05:20",
+            "defectDetection": "LAST_DETECTED",
+            "defectDetectionSnapshotId": 10359,
+            "defectDetectionSnapshotIsLatest": true,
+            "affectedStreamNames": [
+                "andrewvaughanj-zlib"
+            ]
+        },
+        {
+            "userName": "commit",
+            "date": "2015-10-13 03:01:37",
+            "defectDetection": "FIRST_DETECTED",
+            "defectDetectionSnapshotId": 10358,
+            "defectDetectionSnapshotIsLatest": false,
+            "affectedStreamNames": [
+                "andrewvaughanj-zlib"
+            ]
+        }
+    ]
+}

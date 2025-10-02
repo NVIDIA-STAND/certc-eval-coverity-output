@@ -1,0 +1,160 @@
+{
+    "occurrences": [
+        {
+            "eventSets": [
+                {
+                    "eventTree": [
+                        {
+                            "level": 0,
+                            "eventTreeLabel": "8",
+                            "parentIds": [],
+                            "stackTrace": null,
+                            "accessible": true,
+                            "main": true,
+                            "filename": "gzwrite.c",
+                            "fileInstanceId": 164649,
+                            "description": "Calling &quot;gz_comp&quot; without checking return value (as is done elsewhere 8 out of 9 times).",
+                            "id": "20770-11",
+                            "lineNumber": 492,
+                            "tag": "check_return"
+                        }
+                    ],
+                    "set": 0,
+                    "caption": "Unchecked call to function",
+                    "setLabel": ""
+                },
+                {
+                    "eventTree": [
+                        {
+                            "level": 0,
+                            "eventTreeLabel": "1",
+                            "parentIds": [],
+                            "stackTrace": null,
+                            "accessible": true,
+                            "main": false,
+                            "filename": "gzwrite.c",
+                            "fileInstanceId": 164649,
+                            "description": "Example 1: &quot;gz_comp(state, 0)&quot; has its value checked in &quot;gz_comp(state, 0) == -1&quot;.",
+                            "id": "20770-12",
+                            "lineNumber": 142,
+                            "tag": "example_checked"
+                        }
+                    ],
+                    "set": 1,
+                    "caption": "Examples where return value is checked",
+                    "setLabel": "A"
+                },
+                {
+                    "eventTree": [
+                        {
+                            "level": 0,
+                            "eventTreeLabel": "1",
+                            "parentIds": [],
+                            "stackTrace": null,
+                            "accessible": true,
+                            "main": false,
+                            "filename": "gzwrite.c",
+                            "fileInstanceId": 164649,
+                            "description": "Example 2: &quot;gz_comp(state, 4)&quot; has its value checked in &quot;gz_comp(state, 4) == -1&quot;.",
+                            "id": "20770-13",
+                            "lineNumber": 562,
+                            "tag": "example_checked"
+                        }
+                    ],
+                    "set": 2,
+                    "caption": null,
+                    "setLabel": "B"
+                },
+                {
+                    "eventTree": [
+                        {
+                            "level": 0,
+                            "eventTreeLabel": "1",
+                            "parentIds": [],
+                            "stackTrace": null,
+                            "accessible": true,
+                            "main": false,
+                            "filename": "gzwrite.c",
+                            "fileInstanceId": 164649,
+                            "description": "Example 3: &quot;gz_comp(state, 0)&quot; has its value checked in &quot;gz_comp(state, 0) == -1&quot;.",
+                            "id": "20770-14",
+                            "lineNumber": 338,
+                            "tag": "example_checked"
+                        }
+                    ],
+                    "set": 3,
+                    "caption": null,
+                    "setLabel": "C"
+                },
+                {
+                    "eventTree": [
+                        {
+                            "level": 0,
+                            "eventTreeLabel": "1",
+                            "parentIds": [],
+                            "stackTrace": null,
+                            "accessible": true,
+                            "main": false,
+                            "filename": "gzwrite.c",
+                            "fileInstanceId": 164649,
+                            "description": "Example 4: &quot;gz_comp(state, 0)&quot; has its value checked in &quot;gz_comp(state, 0) == -1&quot;.",
+                            "id": "20770-15",
+                            "lineNumber": 223,
+                            "tag": "example_checked"
+                        }
+                    ],
+                    "set": 4,
+                    "caption": null,
+                    "setLabel": "D"
+                },
+                {
+                    "eventTree": [
+                        {
+                            "level": 0,
+                            "eventTreeLabel": "1",
+                            "parentIds": [],
+                            "stackTrace": null,
+                            "accessible": true,
+                            "main": false,
+                            "filename": "gzwrite.c",
+                            "fileInstanceId": 164649,
+                            "description": "Example 5: &quot;gz_comp(state, 0)&quot; has its value checked in &quot;gz_comp(state, 0) == -1&quot;.",
+                            "id": "20770-16",
+                            "lineNumber": 229,
+                            "tag": "example_checked"
+                        }
+                    ],
+                    "set": 5,
+                    "caption": null,
+                    "setLabel": "E"
+                }
+            ],
+            "ordered": true,
+            "streamName": "andrewvaughanj-zlib",
+            "occurrenceIndex": 1,
+            "occurrenceCount": 1,
+            "fullOccurrenceCount": 1,
+            "defectInstanceId": 20770,
+            "properties": [],
+            "purged": false
+        }
+    ],
+    "longDescription": "Value returned from a function is not checked for errors before being used",
+    "country": "US",
+    "ruleStrength": null,
+    "projects": [],
+    "hasDocumentation": true,
+    "defectInstanceId": 20770,
+    "functionName": "gzflush",
+    "language": "en",
+    "shortDescription": "Unchecked return value",
+    "mergedDefectCID": 17091,
+    "localEffect": "If the function returns an error value, the error value may be mistaken for a normal value.",
+    "domain": "static",
+    "unclassifiedChecker": false,
+    "checkerName": "CHECKED_RETURN",
+    "purged": false,
+    "mergedDefectId": 17091,
+    "cweCategory": 252,
+    "microsoftRuleName": null
+}

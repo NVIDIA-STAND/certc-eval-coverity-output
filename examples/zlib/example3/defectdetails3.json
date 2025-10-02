@@ -1,0 +1,87 @@
+{
+    "occurrences": [
+        {
+            "eventSets": [
+                {
+                    "eventTree": [
+                        {
+                            "level": 0,
+                            "eventTreeLabel": "26",
+                            "parentIds": [],
+                            "stackTrace": null,
+                            "accessible": true,
+                            "main": true,
+                            "filename": "minigzip.c",
+                            "fileInstanceId": 164650,
+                            "description": "Passing tainted string &quot;*argv&quot; to &quot;file_uncompress&quot;, which cannot accept tainted data.",
+                            "id": "20772-40",
+                            "lineNumber": 629,
+                            "tag": "tainted_string"
+                        },
+                        {
+                            "level": 1,
+                            "eventTreeLabel": "26.4",
+                            "parentIds": [
+                                "20772-40"
+                            ],
+                            "stackTrace": null,
+                            "accessible": true,
+                            "main": false,
+                            "filename": "minigzip.c",
+                            "fileInstanceId": 164650,
+                            "description": "Assigning: &quot;infile&quot; = &quot;file&quot;, which taints &quot;infile&quot;.",
+                            "id": "20772-45",
+                            "lineNumber": 517,
+                            "tag": "var_assign_parm"
+                        },
+                        {
+                            "level": 1,
+                            "eventTreeLabel": "26.8",
+                            "parentIds": [
+                                "20772-40"
+                            ],
+                            "stackTrace": null,
+                            "accessible": true,
+                            "main": false,
+                            "filename": "minigzip.c",
+                            "fileInstanceId": 164650,
+                            "description": "Passing tainted string &quot;infile&quot; to &quot;unlink&quot;, which depends on its content.",
+                            "id": "20772-52",
+                            "lineNumber": 542,
+                            "tag": "tainted_string_sink_content_lv_call"
+                        }
+                    ],
+                    "set": 0,
+                    "caption": "Tainted data flows to untainted sink",
+                    "setLabel": ""
+                }
+            ],
+            "ordered": true,
+            "streamName": "andrewvaughanj-zlib",
+            "occurrenceIndex": 1,
+            "occurrenceCount": 1,
+            "fullOccurrenceCount": 1,
+            "defectInstanceId": 20772,
+            "properties": [],
+            "purged": false
+        }
+    ],
+    "longDescription": "An unscrutinized string from an untrusted source used in a trusted context",
+    "country": "US",
+    "ruleStrength": null,
+    "projects": [],
+    "hasDocumentation": true,
+    "defectInstanceId": 20772,
+    "functionName": "main",
+    "language": "en",
+    "shortDescription": "Use of untrusted string value",
+    "mergedDefectCID": 17092,
+    "localEffect": "The string may be incorrectly assumed to not contain certain metacharacters or element names in later operations.",
+    "domain": "static",
+    "unclassifiedChecker": false,
+    "checkerName": "TAINTED_STRING",
+    "purged": false,
+    "mergedDefectId": 17092,
+    "cweCategory": 20,
+    "microsoftRuleName": null
+}

@@ -1,0 +1,168 @@
+{
+    "fileMax": 250,
+    "ancestorFileInstanceIds": [
+        164651,
+        164767
+    ],
+    "filePath": "/gzwrite.c",
+    "fileStart": 251,
+    "lineIdPrefix": "main",
+    "ta": {
+        "fileChangeRecords": [],
+        "fileAnnotations": []
+    },
+    "mainEventId": "20770-11",
+    "fileInstanceId": "164767",
+    "fileEnd": 500,
+    "fileLast": 577,
+    "defects": [
+        {
+            "checker": "CHECKED_RETURN",
+            "defectInstanceIds": [
+                20770
+            ],
+            "shortDescription": "Unchecked return value",
+            "ids": {
+                "cid": 17091,
+                "defectInstanceId": 20770,
+                "fileInstanceId": "164767",
+                "mergedDefectId": 17091
+            },
+            "occurrenceIndex": 1,
+            "occurrenceCount": 1,
+            "mainEvent": {
+                "id": "20770-11",
+                "description": "Calling <span class=\"code\">gz_comp</span> without checking return value (as is done elsewhere 8 out of 9 times).",
+                "lineNumber": 492
+            },
+            "impact": "Medium"
+        }
+    ],
+    "purged": false,
+    "events": [
+        {
+            "id": "20770-0",
+            "lineNumber": 472,
+            "ordered": true,
+            "description": "Condition <span class=\"code\">file&nbsp;==&nbsp;NULL</span>, taking false branch",
+            "tag": "cond_false",
+            "polarity": "false",
+            "orderLabel": "1"
+        },
+        {
+            "id": "20770-2",
+            "lineNumber": 477,
+            "ordered": true,
+            "description": "Condition <span class=\"code\">state-&gt;mode&nbsp;!=&nbsp;<span class=\"literal\">31153</span></span>, taking false branch",
+            "tag": "cond_false",
+            "polarity": "false",
+            "orderLabel": "2"
+        },
+        {
+            "id": "20770-3",
+            "lineNumber": 477,
+            "ordered": true,
+            "description": "Condition <span class=\"code\">state-&gt;err&nbsp;!=&nbsp;<span class=\"literal\">0</span></span>, taking false branch",
+            "tag": "cond_false",
+            "polarity": "false",
+            "orderLabel": "3"
+        },
+        {
+            "id": "20770-5",
+            "lineNumber": 481,
+            "ordered": true,
+            "description": "Condition <span class=\"code\">flush&nbsp;&lt;&nbsp;<span class=\"literal\">0</span></span>, taking false branch",
+            "tag": "cond_false",
+            "polarity": "false",
+            "orderLabel": "4"
+        },
+        {
+            "id": "20770-6",
+            "lineNumber": 481,
+            "ordered": true,
+            "description": "Condition <span class=\"code\">flush&nbsp;&gt;&nbsp;<span class=\"literal\">4</span></span>, taking false branch",
+            "tag": "cond_false",
+            "polarity": "false",
+            "orderLabel": "5"
+        },
+        {
+            "id": "20770-8",
+            "lineNumber": 485,
+            "ordered": true,
+            "description": "Condition <span class=\"code\">state-&gt;seek</span>, taking true branch",
+            "tag": "cond_true",
+            "polarity": "false",
+            "orderLabel": "6"
+        },
+        {
+            "id": "20770-9",
+            "lineNumber": 487,
+            "ordered": true,
+            "description": "Condition <span class=\"code\">gz_zero(state,&nbsp;state-&gt;skip)&nbsp;==&nbsp;-<span class=\"literal\">1</span></span>, taking false branch",
+            "tag": "cond_false",
+            "polarity": "false",
+            "orderLabel": "7"
+        },
+        {
+            "id": "20770-11",
+            "lineNumber": 492,
+            "ordered": true,
+            "tag": "check_return",
+            "description": "Calling <span class=\"code\">gz_comp</span> without checking return value (as is done elsewhere 8 out of 9 times).",
+            "orderLabel": "8",
+            "eventSet": 0,
+            "main": true
+        },
+        {
+            "id": "20770-12",
+            "lineNumber": 142,
+            "ordered": true,
+            "tag": "example_checked",
+            "description": "Example 1: <span class=\"code\">gz_comp(state,&nbsp;<span class=\"literal\">0</span>)</span> has its value checked in <span class=\"code\">gz_comp(state,&nbsp;<span class=\"literal\">0</span>)&nbsp;==&nbsp;-<span class=\"literal\">1</span></span>.",
+            "orderLabel": "A1",
+            "eventSet": 1,
+            "main": false
+        },
+        {
+            "id": "20770-13",
+            "lineNumber": 562,
+            "ordered": true,
+            "tag": "example_checked",
+            "description": "Example 2: <span class=\"code\">gz_comp(state,&nbsp;<span class=\"literal\">4</span>)</span> has its value checked in <span class=\"code\">gz_comp(state,&nbsp;<span class=\"literal\">4</span>)&nbsp;==&nbsp;-<span class=\"literal\">1</span></span>.",
+            "orderLabel": "B1",
+            "eventSet": 2,
+            "main": false
+        },
+        {
+            "id": "20770-14",
+            "lineNumber": 338,
+            "ordered": true,
+            "tag": "example_checked",
+            "description": "Example 3: <span class=\"code\">gz_comp(state,&nbsp;<span class=\"literal\">0</span>)</span> has its value checked in <span class=\"code\">gz_comp(state,&nbsp;<span class=\"literal\">0</span>)&nbsp;==&nbsp;-<span class=\"literal\">1</span></span>.",
+            "orderLabel": "C1",
+            "eventSet": 3,
+            "main": false
+        },
+        {
+            "id": "20770-15",
+            "lineNumber": 223,
+            "ordered": true,
+            "tag": "example_checked",
+            "description": "Example 4: <span class=\"code\">gz_comp(state,&nbsp;<span class=\"literal\">0</span>)</span> has its value checked in <span class=\"code\">gz_comp(state,&nbsp;<span class=\"literal\">0</span>)&nbsp;==&nbsp;-<span class=\"literal\">1</span></span>.",
+            "orderLabel": "D1",
+            "eventSet": 4,
+            "main": false
+        },
+        {
+            "id": "20770-16",
+            "lineNumber": 229,
+            "ordered": true,
+            "tag": "example_checked",
+            "description": "Example 5: <span class=\"code\">gz_comp(state,&nbsp;<span class=\"literal\">0</span>)</span> has its value checked in <span class=\"code\">gz_comp(state,&nbsp;<span class=\"literal\">0</span>)&nbsp;==&nbsp;-<span class=\"literal\">1</span></span>.",
+            "orderLabel": "E1",
+            "eventSet": 5,
+            "main": false
+        }
+    ],
+    "mergedDefectId": 17091
+}

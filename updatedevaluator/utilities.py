@@ -4,18 +4,11 @@ from __future__ import annotations
 import json
 from typing import Any, Dict, List, Optional
 
-import os
-
 SEVERITY_ORDER = ["Low", "Medium", "High", "Critical"]
 PRIORITY_OPTIONS = [f"P{i}" for i in range(1, 19)]
-
-# Get the base directory of the project (one level up from the evaluator directory)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
-# Define paths relative to the project root
-CERT_C_RULES_PATH = os.path.join(BASE_DIR, "cert-c", "certc_rules.json")
-COVERITY_EXAMPLES_PATH = os.path.join(BASE_DIR, "coverity", "example_inputs.json")
-RUBRIC_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "rubric.json")
+CERT_C_RULES_PATH = "cert-c/certc_rules.json"
+COVERITY_EXAMPLES_PATH = "coverity/example_inputs.json"
+RUBRIC_PATH = "evaluator/rubric.json"
 
 def normalize(value: Optional[str]) -> str:
     """Normalize a possibly missing string before downstream analysis."""

@@ -1,0 +1,125 @@
+{
+    "fileMax": 250,
+    "ancestorFileInstanceIds": [
+        164651,
+        164652,
+        164653
+    ],
+    "filePath": "/test/example.c",
+    "fileStart": 251,
+    "lineIdPrefix": "main",
+    "ta": {
+        "fileChangeRecords": [],
+        "fileAnnotations": []
+    },
+    "mainEventId": "20769-2",
+    "fileInstanceId": "164653",
+    "fileEnd": 500,
+    "fileLast": 601,
+    "defects": [
+        {
+            "checker": "CHECKED_RETURN",
+            "defectInstanceIds": [
+                20769
+            ],
+            "shortDescription": "Unchecked return value",
+            "ids": {
+                "cid": 17090,
+                "defectInstanceId": 20769,
+                "fileInstanceId": "164653",
+                "mergedDefectId": 17090
+            },
+            "occurrenceIndex": 1,
+            "occurrenceCount": 1,
+            "mainEvent": {
+                "id": "20769-2",
+                "description": "Calling <span class=\"code\">inflate</span> without checking return value (as is done elsewhere 4 out of 5 times).",
+                "lineNumber": 435
+            },
+            "impact": "Medium"
+        }
+    ],
+    "purged": false,
+    "events": [
+        {
+            "id": "20769-0",
+            "lineNumber": 430,
+            "ordered": true,
+            "description": "Condition <span class=\"code\">err&nbsp;!=&nbsp;<span class=\"literal\">0</span></span>, taking false branch",
+            "tag": "cond_false",
+            "polarity": "false",
+            "orderLabel": "1"
+        },
+        {
+            "id": "20769-2",
+            "lineNumber": 435,
+            "ordered": true,
+            "tag": "check_return",
+            "description": "Calling <span class=\"code\">inflate</span> without checking return value (as is done elsewhere 4 out of 5 times).",
+            "orderLabel": "2",
+            "eventSet": 0,
+            "main": true
+        },
+        {
+            "id": "20769-5",
+            "lineNumber": 517,
+            "ordered": true,
+            "tag": "example_assign",
+            "description": "Example 2: Assigning: <span class=\"code\">err</span> = return value from <span class=\"code\">inflate(&amp;d_stream,&nbsp;<span class=\"literal\">0</span>)</span>.",
+            "orderLabel": "B1",
+            "eventSet": 2,
+            "main": false
+        },
+        {
+            "id": "20769-6",
+            "lineNumber": 518,
+            "ordered": true,
+            "tag": "example_checked",
+            "description": "Example 2 (cont.): <span class=\"code\">err</span> has its value checked in <span class=\"code\">err&nbsp;==&nbsp;<span class=\"literal\">1</span></span>.",
+            "orderLabel": "B2",
+            "eventSet": 2,
+            "main": false
+        },
+        {
+            "id": "20769-7",
+            "lineNumber": 260,
+            "ordered": true,
+            "tag": "example_assign",
+            "description": "Example 3: Assigning: <span class=\"code\">err</span> = return value from <span class=\"code\">inflate(&amp;d_stream,&nbsp;<span class=\"literal\">0</span>)</span>.",
+            "orderLabel": "C1",
+            "eventSet": 3,
+            "main": false
+        },
+        {
+            "id": "20769-8",
+            "lineNumber": 261,
+            "ordered": true,
+            "tag": "example_checked",
+            "description": "Example 3 (cont.): <span class=\"code\">err</span> has its value checked in <span class=\"code\">err&nbsp;==&nbsp;<span class=\"literal\">1</span></span>.",
+            "orderLabel": "C2",
+            "eventSet": 3,
+            "main": false
+        },
+        {
+            "id": "20769-9",
+            "lineNumber": 356,
+            "ordered": true,
+            "tag": "example_assign",
+            "description": "Example 4: Assigning: <span class=\"code\">err</span> = return value from <span class=\"code\">inflate(&amp;d_stream,&nbsp;<span class=\"literal\">0</span>)</span>.",
+            "orderLabel": "D1",
+            "eventSet": 4,
+            "main": false
+        },
+        {
+            "id": "20769-10",
+            "lineNumber": 357,
+            "ordered": true,
+            "tag": "example_checked",
+            "description": "Example 4 (cont.): <span class=\"code\">err</span> has its value checked in <span class=\"code\">err&nbsp;==&nbsp;<span class=\"literal\">1</span></span>.",
+            "orderLabel": "D2",
+            "eventSet": 4,
+            "main": false
+        }
+    ],
+    "mergedDefectId": 17090
+}

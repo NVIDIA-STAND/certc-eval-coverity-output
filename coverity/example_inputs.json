@@ -1,1 +1,179 @@
-[]
+[
+    {
+      "coverity": {
+        "rule_id": "API00-C",
+        "severity": "Medium",
+        "priority": "P1",
+        "message": "Function 'setfile' trusts caller; parameter 'file' not validated.",
+        "code": "extern int setfile(FILE *file);\nstatic FILE *g;\nint setfile(FILE *file){ g = file; return 0; }"
+      },
+      "ai": {
+        "identified_severity": "High",
+        "identified_priority": "P1",
+        "explanation": "Using an invalid FILE* can corrupt internal state; validate pointer and stream state.",
+        "fix_narrative": "Reject NULL and streams with error/EOF before assigning.",
+        "patch": "int setfile(FILE *file){ if(!file || ferror(file) || feof(file)) return -1; g=file; return 0; }"
+      }
+    },
+    {
+      "coverity": {
+        "rule_id": "API01-C",
+        "severity": "High",
+        "priority": "P18",
+        "message": "Potential overflow of string may corrupt adjacent sensitive pointer.",
+        "code": "struct node { char name[20]; struct node* next; };"
+      },
+      "ai": {
+        "identified_severity": "High",
+        "identified_priority": "P18",
+        "explanation": "Overflow of name can overwrite 'next' causing arbitrary memory read/write.",
+        "fix_narrative": "Reorder fields so pointer precedes the string, or store string out-of-line.",
+        "patch": "struct node { struct node* next; char name[20]; };"
+      }
+    },
+    {
+      "coverity": {
+        "rule_id": "API02-C",
+        "severity": "High",
+        "priority": "P18",
+        "message": "Function writes to array without size parameter.",
+        "code": "void fill(int *out){ for(int i=0;i<100;i++) out[i]=i; }"
+      },
+      "ai": {
+        "identified_severity": "High",
+        "identified_priority": "P18",
+        "explanation": "Caller’s buffer size is unknown; may write out-of-bounds.",
+        "fix_narrative": "Accept the element count and bound the loop.",
+        "patch": "void fill(int *out, size_t out_count){ for(size_t i=0;i<out_count && i<100;i++) out[i]=(int)i; }"
+      }
+    },
+    {
+      "coverity": {
+        "rule_id": "API03-C",
+        "severity": "Medium",
+        "priority": "P2",
+        "message": "Inconsistent parameter order across related APIs.",
+        "code": "int log_write(const char* msg, FILE* f);\nint log_error(FILE* f, const char* msg);"
+      },
+      "ai": {
+        "identified_severity": "Low",
+        "identified_priority": "P2",
+        "explanation": "Inconsistency increases misuse risk but is not an immediate memory bug.",
+        "fix_narrative": "Normalize to put FILE* first in both declarations.",
+        "patch": "int log_write(FILE* f, const char* msg);\nint log_error(FILE* f, const char* msg);"
+      }
+    },
+    {
+      "coverity": {
+        "rule_id": "API04-C",
+        "severity": "Medium",
+        "priority": "P2",
+        "message": "Function returns value but provides no reliable error reporting.",
+        "code": "char* my_strdup(const char* s){ size_t n=strlen(s)+1; char* p=malloc(n); if(!p) return 0; return memcpy(p,s,n); }"
+      },
+      "ai": {
+        "identified_severity": "Medium",
+        "identified_priority": "P2",
+        "explanation": "Callers may not check NULL; inconsistent error reporting leads to misuse.",
+        "fix_narrative": "Return status code and deliver result via out-parameter.",
+        "patch": "int my_strdup(const char* s, char** out){ if(!s||!out) return EINVAL; size_t n=strlen(s)+1; char* p=(char*)malloc(n); if(!p) return ENOMEM; memcpy(p,s,n); *out=p; return 0; }"
+      }
+    },
+    {
+      "coverity": {
+        "rule_id": "API05-C",
+        "severity": "High",
+        "priority": "P12",
+        "message": "Missing conformant array annotation; size relation unclear.",
+        "code": "void init(int *a, size_t n){ for(size_t i=0;i<n;i++) a[i]=0; }"
+      },
+      "ai": {
+        "identified_severity": "Medium",
+        "identified_priority": "P12",
+        "explanation": "Intent is clear but documenting bounds helps analyzers and readers.",
+        "fix_narrative": "Use conformant array parameter to document the relation.",
+        "patch": "void init(size_t n, int a[n]){ for(size_t i=0;i<n;i++) a[i]=0; }"
+      }
+    },
+    {
+      "coverity": {
+        "rule_id": "API07-C",
+        "severity": "High",
+        "priority": "P18",
+        "message": "strncpy may produce unterminated string.",
+        "code": "char dst[8];\nstrncpy(dst, user, 8);\n// use dst as NTBS"
+      },
+      "ai": {
+        "identified_severity": "High",
+        "identified_priority": "P18",
+        "explanation": "If source length >= 8, dst is not NUL-terminated and later NTBS use overreads.",
+        "fix_narrative": "Reserve 1 byte for terminator and force NUL.",
+        "patch": "char dst[8];\nstrncpy(dst, user, sizeof(dst)-1);\ndst[sizeof(dst)-1]='\\0';"
+      }
+    },
+    {
+      "coverity": {
+        "rule_id": "ENV01-C",
+        "severity": "High",
+        "priority": "P9",
+        "message": "Assumes small environment variable; potential overflow.",
+        "code": "char buf[64];\nchar* p = getenv(\"PATH\");\nif(p) strcpy(buf, p);"
+      },
+      "ai": {
+        "identified_severity": "High",
+        "identified_priority": "P9",
+        "explanation": "PATH can exceed 64 bytes leading to overflow.",
+        "fix_narrative": "Use bounded copy and fail closed.",
+        "patch": "char buf[64];\nchar* p = getenv(\"PATH\");\nif(p){ strncpy(buf, p, sizeof(buf)-1); buf[sizeof(buf)-1]='\\0'; }"
+      }
+    },
+    {
+      "coverity": {
+        "rule_id": "STR31-C",
+        "severity": "High",
+        "priority": "P18",
+        "message": "Potential off-by-one when building string.",
+        "code": "char path[128];\nsnprintf(path, 128, \"%s/%s\", dir, file);\npath[128] = '\\0';"
+      },
+      "ai": {
+        "identified_severity": "High",
+        "identified_priority": "P18",
+        "explanation": "Writing at path[128] is OOB; valid last index is 127.",
+        "fix_narrative": "Use sizeof(path) consistently and do not write past end.",
+        "patch": "char path[128];\nsnprintf(path, sizeof(path), \"%s/%s\", dir, file);\n/* no manual write needed */"
+      }
+    },
+    {
+      "coverity": {
+        "rule_id": "API00-C",
+        "severity": "Medium",
+        "priority": "P2",
+        "message": "Callee does not validate length parameter.",
+        "code": "int sum(const int* a, size_t n){ int s=0; for(size_t i=0;i<100;i++) s+=a[i]; return s; }"
+      },
+      "ai": {
+        "identified_severity": "High",
+        "identified_priority": "P2",
+        "explanation": "Loop ignores n; reads past caller-provided buffer.",
+        "fix_narrative": "Use n as boundary and guard inputs.",
+        "patch": "int sum(const int* a, size_t n){ if(!a) return 0; int s=0; for(size_t i=0;i<n; i++) s+=a[i]; return s; }"
+      }
+    },
+    {
+      "coverity": {
+        "rule_id": "API04-C",
+        "severity": "Medium",
+        "priority": "P2",
+        "message": "Complex API discourages error checking (returns mixed data/status).",
+        "code": "long read_count(FILE* f){ if(!f) return -1; long n=0; while(fgetc(f)!=EOF) n++; return n; }"
+      },
+      "ai": {
+        "identified_severity": "Low",
+        "identified_priority": "P2",
+        "explanation": "Caller may confuse valid counts with error sentinel.",
+        "fix_narrative": "Return status separately; write count via out param.",
+        "patch": "int read_count(FILE* f, long* out){ if(!f||!out) return EINVAL; long n=0; int c; while((c=fgetc(f))!=EOF) n++; *out=n; return 0; }"
+      }
+    }
+  ]
+  
